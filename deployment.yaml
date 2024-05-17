@@ -17,3 +17,13 @@ spec:
         image: estebarra/fast_api_test:latest
         ports:
         - containerPort: 8080
+        securityContext:
+          allowPrivilegeEscalation: false
+          runAsNonRoot: true
+          readOnlyRootFilesystem: true
+        volumeMounts:
+        - mountPath: /tmp/py_cache
+          name: tmpfs-python
+      volumes:
+        - name: tmpfs-python
+          emptyDir: {}

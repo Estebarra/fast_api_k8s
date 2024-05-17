@@ -29,9 +29,11 @@ COPY --chown=python:python --from=build /usr/app/venv ./venv
 
 COPY --chown=python:python ./app .
 
-USER 999
-
 ENV PATH="/usr/app/venv/bin:$PATH"
+ENV PYTHONPYCACHEPREFIX=/tmp/py_cache
+ENV TMPDIR=/tmp/py_cache
+
+USER 999
 
 EXPOSE 8080
 
