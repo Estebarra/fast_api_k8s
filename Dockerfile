@@ -1,4 +1,4 @@
-FROM python:3.9-slim-bullseye as build
+FROM python:3.12.7-slim-bullseye as build
 
 RUN apt-get update
 
@@ -16,7 +16,7 @@ COPY requirements.txt .
 RUN pip install --no-cache-dir --upgrade -r requirements.txt
 
 #########################################################################
-FROM python:3.9-slim-bullseye
+FROM python:3.12.7-slim-bullseye
 
 RUN groupadd -g 999 python && \
     useradd -r -u 999 -g python python
